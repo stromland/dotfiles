@@ -1,0 +1,15 @@
+
+notARepository: 'skip'
+gui:
+  mouseEvents: false
+  showFileTree: false
+  theme:
+    activeBorderColor:
+      - white
+      - bold
+    selectedLineBgColor:
+      - default
+    inactiveBorderColor:
+      - default
+    optionsTextColor:
+      - default
