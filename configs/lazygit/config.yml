@@ -8,7 +8,7 @@ gui:
       - white
       - bold
     selectedLineBgColor:
-      - default
+      - black
     inactiveBorderColor:
       - default
     optionsTextColor:
