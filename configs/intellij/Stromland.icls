@@ -1,9 +1,9 @@
 <scheme name="Stromland" version="142" parent_scheme="Darcula">
   <metaInfo>
-    <property name="created">2022-10-02T13:50:54</property>
+    <property name="created">2022-10-02T14:07:53</property>
     <property name="ide">idea</property>
     <property name="ideVersion">2022.2.2.0.0</property>
-    <property name="modified">2022-10-02T13:51:05</property>
+    <property name="modified">2022-10-02T14:07:59</property>
     <property name="originalScheme">Stromland</property>
   </metaInfo>
   <colors>
@@ -399,7 +399,7 @@
     </option>
     <option name="KOTLIN_LABEL">
       <value>
-        <option name="FOREGROUND" value="98c379" />
+        <option name="FOREGROUND" value="61afef" />
       </value>
     </option>
     <option name="KOTLIN_NAMED_ARGUMENT">
@@ -490,7 +490,7 @@
     </option>
     <option name="MATCHED_BRACE_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="e5c07b" />
+        <option name="FOREGROUND" value="61afef" />
         <option name="FONT_TYPE" value="1" />
       </value>
     </option>
@@ -558,7 +558,11 @@
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
-    <option name="TYPE_PARAMETER_NAME_ATTRIBUTES" baseAttributes="DEFAULT_PARAMETER" />
+    <option name="TYPE_PARAMETER_NAME_ATTRIBUTES">
+      <value>
+        <option name="FOREGROUND" value="56b6c2" />
+      </value>
+    </option>
     <option name="TYPO">
       <value>
         <option name="EFFECT_COLOR" value="98c379" />
