@@ -7,8 +7,8 @@ gui:
     activeBorderColor:
       - white
       - bold
-    selectedLineBgColor:
-      - black
+    selectedLineBgColor: 
+      - '#282A33'
     inactiveBorderColor:
       - default
     optionsTextColor:

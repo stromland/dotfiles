@@ -1,8 +1,8 @@
 {
   "background": "#272932",
-  "black": "#282C34",
+  "black": "#272932",
   "blue": "#61AFEF",
-  "brightBlack": "#5A6374",
+  "brightBlack": "#404352",
   "brightBlue": "#61AFEF",
   "brightCyan": "#56B6C2",
   "brightGreen": "#98C379",
@@ -14,11 +14,10 @@
   "cyan": "#56B6C2",
   "foreground": "#9E8672",
   "green": "#98C379",
-  "name": "Developer",
+  "name": "Developer 2",
   "purple": "#C678DD",
   "red": "#E06C75",
-  "selectionBackground": "#FFFFFF",
-  "white": "#DCDFE4",
+  "selectionBackground": "#9E8672",
+  "white": "#9E8672",
   "yellow": "#E5C07B"
 }
-
