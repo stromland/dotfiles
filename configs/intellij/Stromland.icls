@@ -1,9 +1,9 @@
 <scheme name="Stromland" version="142" parent_scheme="Darcula">
   <metaInfo>
-    <property name="created">2022-10-02T13:39:26</property>
-    <property name="ide">Idea</property>
+    <property name="created">2022-10-02T13:50:54</property>
+    <property name="ide">idea</property>
     <property name="ideVersion">2022.2.2.0.0</property>
-    <property name="modified">2022-10-02T13:39:49</property>
+    <property name="modified">2022-10-02T13:51:05</property>
     <property name="originalScheme">Stromland</property>
   </metaInfo>
   <colors>
@@ -400,6 +400,11 @@
     <option name="KOTLIN_LABEL">
       <value>
         <option name="FOREGROUND" value="98c379" />
+      </value>
+    </option>
+    <option name="KOTLIN_NAMED_ARGUMENT">
+      <value>
+        <option name="FOREGROUND" value="61afef" />
       </value>
     </option>
     <option name="KOTLIN_SMART_CAST_RECEIVER">
