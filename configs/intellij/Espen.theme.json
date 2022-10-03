@@ -1,0 +1,42 @@
+{
+  "name": "Espen Strømland",
+  "author": "Stromland.dev",
+  "dark": true,
+  "colors": {
+    "Background": "#2d333b",
+    "Editor.background": "#272932",
+
+    "selectionBackground": "#6a553f",
+
+    "foreground": "#9E8672",
+
+    "black": "#282C34",
+    "brightBlack": "#5A6374",
+    "blue": "#61AFEF",
+    "cyan": "#56B6C2",
+    "green": "#98C379",
+    "purple": "#C678DD",
+    "red": "#E06C75",
+    "white": "#DCDFE4",
+    "yellow": "#E5C07B"
+  },
+  "ui": {
+    "*": {
+      "background": "Background",
+      "foreground": "foreground",
+      "selectionBackground": "selectionBackground",
+      "selectionInactiveBackground": "Editor.background",
+      "inactiveBackground": "Background",
+      "borderColor": "Background",
+      "focusColor": "foreground"
+    },
+    "MainToolbar.background": "black",
+    "ToolWindow.background": "black",
+    "Button.background": "black",
+    "Panel.background": "black",
+    "CheckBox.background": "black",
+    "ToolWindow.Header.borderColor": "foreground",
+    "Label.foreground": "white",
+    "Menu.borderColor": "foreground"
+  }
+}
