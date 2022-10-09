@@ -1,4 +1,4 @@
-# dotfiles
+# Dotfiles
 
 ### Terminal colors
 Fg = `#9E8672`

@@ -1,0 +1,158 @@
+" Plugin Start
+"-------------------------------------------------------------------------------
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Vundle
+"---------------------------------------
+Plugin 'gmarik/Vundle.vim'
+"---------------------------------------
+
+" Vim Extentions
+"---------------------------------------
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'airblade/vim-gitgutter'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-ctrlspace/vim-ctrlspace'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'fatih/vim-go'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
+"---------------------------------------
+
+" Production Tools
+"---------------------------------------
+Plugin 'tmhedberg/matchit'
+"Plugin 'mattn/emmet-vim'
+"---------------------------------------
+
+" Syntax And Snippets
+"---------------------------------------
+"Plugin 'isRuslan/vim-es6'
+"Plugin 'othree/html5.vim'
+"Plugin 'digitaltoad/vim-pug'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'mxw/vim-jsx'
+"---------------------------------------
+
+" Colorscheme
+"---------------------------------------
+Plugin 'nanotech/jellybeans.vim'
+"---------------------------------------
+
+" Misc
+"---------------------------------------
+"Plugin 'edkolev/tmuxline.vim'
+"---------------------------------------
+
+call vundle#end()
+filetype plugin indent on
+
+" Plugin End
+"===============================================================================
+
+
+" Config Start
+"-------------------------------------------------------------------------------
+
+" Commands
+"---------------------------------------
+command Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
+
+" Re-Mapping
+"---------------------------------------
+imap jj <esc>
+imap JJ <esc>
+:inoremap <C-s> <Esc>:Update<CR>
+
+" ViM
+"---------------------------------------
+syntax on
+set hidden
+set formatoptions+=r
+set autoindent
+set expandtab
+set nu
+set tabstop=2
+set shiftwidth=2
+
+" CtrlP
+"---------------------------------------
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components)$'
+
+" GitGutter
+"---------------------------------------
+let g:gitgutter_realtime = 0
+set updatetime=250
+
+" Airline
+"---------------------------------------
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" Colorscheme
+"---------------------------------------
+set t_Co=256
+color jellybeans
+set cc=81
+autocmd ColorScheme * highlight ColorColumn ctermbg=235
+
+" CtrlSpace
+"---------------------------------------
+hi CtrlSpaceNormal guifg=#cb4b16 guibg=NONE gui=bold ctermfg=231 ctermbg=NONE term=bold cterm=bold
+hi CtrlSpaceSelected guifg=#cb4b16 guibg=NONE gui=bold ctermfg=68 ctermbg=NONE term=bold cterm=bold
+hi CtrlSpaceSearch guifg=#cb4b16 guibg=NONE gui=bold ctermfg=172 ctermbg=NONE term=bold cterm=bold
+hi CtrlSpaceStatus guifg=#cb4b16 guibg=NONE gui=bold ctermfg=231 ctermbg=NONE term=bold cterm=bold
+
+" Autocomplete
+"---------------------------------------
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+" autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+" Config End
+"===============================================================================
+
+
+" Functions Start
+"-------------------------------------------------------------------------------
+
+" Airline
+"---------------------------------------
+function! AirlineInit()
+  let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
+  let g:airline_section_b = airline#section#create_left(['hunks', '%t'])
+  let g:airline_section_c = airline#section#create(['filetype'])
+  let g:airline_section_x = airline#section#create([''])
+  let g:airline_section_y = airline#section#create(['%P'])
+  let g:airline_section_z = airline#section#create_right(['%l', '%c'])
+endfunction
+
+" NumberToggle
+"---------------------------------------
+function! NumberToggle()
+  if(&relativenumber)
+    set nornu
+    set nu
+  else
+    set nonu
+    set rnu
+  endif
+endfunc
+
+autocmd VimEnter * call AirlineInit()
+nnoremap <C-n> :call NumberToggle()<cr>
+
+" Functions End
+"===============================================================================

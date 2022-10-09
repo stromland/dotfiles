@@ -1,0 +1,15 @@
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "homebrew/services"
+brew "binutils" if OS.linux?
+brew "gcc" if OS.linux?
+brew "gh"
+brew "go"
+brew "highlight"
+brew "k9s"
+brew "lazygit"
+brew "sqlite" if OS.linux?
+brew "python@3.10" if OS.linux?
+brew "tmux"
+brew "vim"
+brew "zsh" if OS.linux?
