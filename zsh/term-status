@@ -1,0 +1,31 @@
+#! /bin/sh
+NODEJS_VERSION=$(node --version | sed -nre 's/^[^0-9]*(([0-9]+\.)*[0-9]+).*/\1/p')
+NPM_VERSION=$(npm --version | sed -nre 's/^[^0-9]*(([0-9]+\.)*[0-9]+).*/\1/p')
+GO_VERSION=$(go env GOVERSION | sed -nre 's/^[^0-9]*(([0-9]+\.)*[0-9]+).*/\1/p')
+RUST_VERSION=$(cargo version | sed -nre 's/^[^0-9]*(([0-9]+\.)*[0-9]+).*/\1/p')
+JAVA_VERSION=$(java -version 2>&1 | grep 'version' 2>&1 | awk -F\" '{ split($2,a,"."); print a[1]}')
+
+VERSIONS=""
+
+if [ "$JAVA_VERSION" != "" ]; then
+  VERSIONS="java:$JAVA_VERSION"
+fi
+if [ "$NODEJS_VERSION" != "" ]; then
+  VERSIONS="$VERSIONS | node:$NODEJS_VERSION"
+fi
+if [ "$NPM_VERSION" != "" ]; then
+  VERSIONS="$VERSIONS | npm:$NPM_VERSION"
+fi
+if [ "$GO_VERSION" != "" ]; then
+  VERSIONS="$VERSIONS | go:$GO_VERSION"
+fi
+if [ "$RUST_VERSION" != "" ]; then
+  VERSIONS="$VERSIONS | rust:$RUST_VERSION"
+fi
+
+echo $VERSIONS
+if [ "$VERSIONS" != "" ]; then
+  echo "[ $VERSIONS ]"
+else
+  echo "Yo no programming?!?!"
+fi
