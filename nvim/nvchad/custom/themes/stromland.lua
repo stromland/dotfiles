@@ -2,7 +2,7 @@ local M = {}
 
 M.base_30 = {
   white = "#DCDFE4",
-  darker_black = "#181920",
+  darker_black = "#1b1c24",
   black = "#1f2028", --  nvim bg
   black2 = "#272932",
   one_bg = "#404352",
@@ -15,7 +15,7 @@ M.base_30 = {
   red = "#E06C75", -- StatusBar (username)
   baby_pink = "#E059AA",
   pink = "#E059AA",
-  line = "#9E8672", -- for lines like vertsplit
+  line = "#67696f", -- for lines like vertsplit
   green = "#98C379", -- StatusBar (file percentage)
   vibrant_green = "#98C379",
   nord_blue = "#61AFEF", -- Mode indicator
@@ -29,7 +29,7 @@ M.base_30 = {
   dark_purple = "#C678DD",
   statusline_bg = "#23242d",
   lightbg = "#1f2028",
-  pmenu_bg = "#9E8672", -- Command bar suggestions
+  pmenu_bg = "#98C379", -- Command bar suggestions
   folder_bg = "#61AFEF",
 }
 
@@ -37,7 +37,7 @@ M.base_16 = {
   base00 = "#1f2028", -- Default bg
   base01 = "#272932", -- Lighter bg (status bar, line number, folding mks)
   base02 = "#404352", -- Selection bg
-  base03 = "#6a553f", -- Comments, invisibles, line hl
+  base03 = "#67696f", -- Comments, invisibles, line hl
   base04 = "#DCDFE4", -- Dark fg (status bars)
   base05 = "#DCDFE4", -- Default fg (caret, delimiters, Operators)
   base06 = "#DCDFE4", -- Light fg (not often used)
