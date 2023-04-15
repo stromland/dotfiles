@@ -18,6 +18,8 @@ local plugins = {
       ensure_installed = {
         "gopls",
         "golangci-lint",
+        "typescript-language-server",
+        "eslint-lsp",
       },
     },
   },
