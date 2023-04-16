@@ -46,7 +46,20 @@ local plugins = {
         "markdown",
       },
     }
-  }
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = function()
+      local gs = require("plugins.configs.others").gitsigns
+      gs.signs.add = { text = "│" }
+      gs.signs.change = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" }
+      gs.signs.delete = { text = "_" }
+      gs.signs.topdelete = { text = "‾" }
+      gs.signs.changedelete = { text = "" }
+      gs.signs.untracked = { text = "|" }
+      return gs
+    end,
+  },
 }
 
 return plugins
