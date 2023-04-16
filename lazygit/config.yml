@@ -1,15 +1,19 @@
 
 notARepository: 'skip'
 gui:
-  mouseEvents: false
   showFileTree: false
+  showIcons: true
+  authorColors:
+    'Espen Strømland': 'yellow'
+    '*': 'blue'
   theme:
     activeBorderColor:
       - white
       - bold
-    selectedLineBgColor: 
-      - '#282A33'
+    selectedLineBgColor:
+      - '#272932'
     inactiveBorderColor:
       - default
     optionsTextColor:
       - default
+
