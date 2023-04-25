@@ -56,7 +56,7 @@ local plugins = {
       gs.signs.delete = { text = "_" }
       gs.signs.topdelete = { text = "‾" }
       gs.signs.changedelete = { text = "" }
-      gs.signs.untracked = { text = "|" }
+      gs.signs.untracked = { text = "│" }
       return gs
     end,
   },

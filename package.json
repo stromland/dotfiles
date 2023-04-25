@@ -1,14 +1,12 @@
 {
   "name": "dotfiles",
   "version": "1.0.0",
-  "description": "Fg = `#9E8672`\r Bg = `#272932`",
-  "main": "index.js",
+  "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "nodemon": "^2.0.22",
     "zx": "^7.2.1"
   }
 }

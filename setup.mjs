@@ -1,28 +1,13 @@
 #!/usr/bin/env zx
 
-import "zx/globals";
+import "zx/globals"
+import nodemon from "nodemon"
 
 const MAC = "darwin"
 const LINUX = "linux"
 const HOME = os.homedir()
 
-async function setup(fn) {
-  const platform = os.platform();
-
-  switch (platform) {
-    case "darwin":
-    case "linux": {
-      try {
-        fn(platform);
-      } catch (e) {
-        echo(e);
-      }
-      break;
-    }
-    default:
-      echo`${platform} IS NOT SUPPORTED`;
-  }
-}
+const [ , mode ] = argv["_"]
 
 const copies = [
   {
@@ -59,15 +44,75 @@ const copies = [
   }
 ]
 
-copies.forEach(config => {
+function error(msg) {
+  console.log(chalk.red(msg))
+}
+
+async function setup(fn) {
+  const platform = os.platform()
+
+  switch (platform) {
+    case "darwin":
+    case "linux": {
+      try {
+        fn(platform)
+      } catch (e) {
+        error(e)
+      }
+      break;
+    }
+    default:
+      error(`${platform} IS NOT SUPPORTED`)
+  }
+}
+
+function runSetupForConfig(config) {
   setup((platform) => {
     const dst = config.dst[platform]
     fs.ensureDirSync(dst)
 
     for (let file of config.files) {
-      fs.copySync(`./${config.dir}/${file}`, `${dst}/${file}`)
-      console.log(`${config.dir}/${file}  ` + chalk.bgGreen.black(' COPIED '))
+      const srcFile = `./${config.dir}/${file}`
+      const dstFile = `${dst}/${file}`
+      fs.copySync(srcFile, dstFile)
+      console.log(chalk.bgGreen.black('  COPIED  ') + ` ${srcFile} -> ${dstFile}`)
     }
   })
-})
+}
+
+function watchFiles() {
+  nodemon({
+    ext: "*",
+    watch: copies.map(it => it.dir),
+    runOnChangeOnly: true,
+    exec: 'echo'
+  })
+    .on("watching", (file) => {
+      console.log(chalk.bgBlue.black(" WATCHING ") + ` ${path.relative(__dirname, file)}`)
+    })
+    .on("quit", (code) => {
+      console.log(chalk.bgYellow.black("  EXIT  "))
+      process.exit(code)
+    })
+    .on("restart", (files) => {
+      const file = files[0]
+      const dir = path.parse(path.relative(__dirname, file)).dir
+      copies.forEach(config => {
+        if (dir.startsWith(config.dir)) {
+          runSetupForConfig(config)
+        }
+      })
+    });
+}
+
+switch (mode) {
+  case "watch":
+    watchFiles()
+    break
+  case "once":
+    copies.forEach(runSetupForConfig)
+    break
+  default:
+    error("Use one of: watch, once")
+}
 
