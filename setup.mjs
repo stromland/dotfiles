@@ -28,7 +28,10 @@ const copies = [
   },
   {
     dir: "tmux",
-    files: [".tmux.conf"],
+    files: ["tmux.conf"],
+    rename: {
+      "tmux.conf": ".tmux.conf"
+    },
     dst: {
       [MAC]: HOME,
       [LINUX]: HOME,
@@ -73,6 +76,10 @@ function runSetupForConfig(config) {
 
     for (let file of config.files) {
       const srcFile = `./${config.dir}/${file}`
+
+      if (config.rename?.[file] !== undefined) {
+        file = config.rename[file]
+      }
       const dstFile = `${dst}/${file}`
       fs.copySync(srcFile, dstFile)
       console.log(chalk.bgGreen.black('  COPIED  ') + ` ${srcFile} -> ${dstFile}`)
@@ -85,7 +92,7 @@ function watchFiles() {
     ext: "*",
     watch: copies.map(it => it.dir),
     runOnChangeOnly: true,
-    exec: 'echo'
+    exec: "echo"
   })
     .on("watching", (file) => {
       console.log(chalk.bgBlue.black(" WATCHING ") + ` ${path.relative(__dirname, file)}`)
