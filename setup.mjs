@@ -60,14 +60,13 @@ const copies = [
 ]
 
 copies.forEach(config => {
-  echo(config.dir)
   setup((platform) => {
     const dst = config.dst[platform]
     fs.ensureDirSync(dst)
 
     for (let file of config.files) {
-      echo` - ${file}`
       fs.copySync(`./${config.dir}/${file}`, `${dst}/${file}`)
+      console.log(`${config.dir}/${file}  ` + chalk.bgGreen.black(' COPIED '))
     }
   })
 })
