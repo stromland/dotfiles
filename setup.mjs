@@ -7,9 +7,7 @@ const MAC = "darwin"
 const LINUX = "linux"
 const HOME = os.homedir()
 
-const [ , mode ] = argv["_"]
-
-const copies = [
+const filesToCopy = [
   {
     dir: "lazygit",
     files: ["config.yml"],
@@ -47,8 +45,10 @@ const copies = [
   }
 ]
 
-function error(msg) {
-  console.log(chalk.red(msg))
+const Log = {
+  info: (type, msg = "") => console.log(chalk.bgBlue.black(type) + ` ${msg}`),
+  success: (type, msg = "") => console.log(chalk.bgGreen.black(type) + ` ${msg}`),
+  error: (type, msg = "") => console.log(chalk.bgRed.black(type) + ` ${msg}`)
 }
 
 async function setup(fn) {
@@ -60,16 +60,16 @@ async function setup(fn) {
       try {
         fn(platform)
       } catch (e) {
-        error(e)
+        Log.error(" ERROR ", e)
       }
       break;
     }
     default:
-      error(`${platform} IS NOT SUPPORTED`)
+      Log.error(" ERROR ", `${platform} IS NOT SUPPORTED`)
   }
 }
 
-function runSetupForConfig(config) {
+function handleCopyFiles(config) {
   setup((platform) => {
     const dst = config.dst[platform]
     fs.ensureDirSync(dst)
@@ -82,7 +82,7 @@ function runSetupForConfig(config) {
       }
       const dstFile = `${dst}/${file}`
       fs.copySync(srcFile, dstFile)
-      console.log(chalk.bgGreen.black('  COPIED  ') + ` ${srcFile} -> ${dstFile}`)
+      Log.success('  COPIED  ', `${srcFile} -> ${dstFile}`)
     }
   })
 }
@@ -90,36 +90,38 @@ function runSetupForConfig(config) {
 function watchFiles() {
   nodemon({
     ext: "*",
-    watch: copies.map(it => it.dir),
+    watch: filesToCopy.map(it => it.dir),
     runOnChangeOnly: true,
     exec: "echo"
   })
     .on("watching", (file) => {
-      console.log(chalk.bgBlue.black(" WATCHING ") + ` ${path.relative(__dirname, file)}`)
+      Log.info(" WATCHING ", `${path.relative(__dirname, file)}`)
     })
     .on("quit", (code) => {
-      console.log(chalk.bgYellow.black("  EXIT  "))
+      Log.info("  EXIT  ", `status: ${code}`)
       process.exit(code)
     })
     .on("restart", (files) => {
       const file = files[0]
       const dir = path.parse(path.relative(__dirname, file)).dir
-      copies.forEach(config => {
+      filesToCopy.forEach(config => {
         if (dir.startsWith(config.dir)) {
-          runSetupForConfig(config)
+          handleCopyFiles(config)
         }
       })
     });
 }
+
+const [ , mode ] = argv["_"]
 
 switch (mode) {
   case "watch":
     watchFiles()
     break
   case "once":
-    copies.forEach(runSetupForConfig)
+    filesToCopy.forEach(handleCopyFiles)
     break
   default:
-    error("Use one of: watch, once")
+    Log.error(" ERROR ", "Use one of: watch, once")
 }
 
