@@ -24,6 +24,14 @@ local plugins = {
     },
   },
   {
+    "nvim-tree/nvim-tree.lua",
+    opts = function()
+      local nt = require "plugins.configs.nvimtree"
+      nt.view.adaptive_size = true
+      return nt
+    end,
+  },
+  {
     "NvChad/nvim-colorizer.lua",
     opts = {
       user_default_options = {

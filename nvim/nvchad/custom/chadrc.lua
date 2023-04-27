@@ -1,7 +1,10 @@
 ---@type ChadrcConfig 
 local M = {}
 M.ui = {
-  theme = 'stromland'
+  theme = 'stromland',
+  statusline = {
+    theme = "vscode",
+  },
 }
 
 M.plugins = "custom.plugins"
