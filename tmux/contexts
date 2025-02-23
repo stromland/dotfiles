@@ -1,0 +1,6 @@
+#! /bin/sh
+
+K8S=$(kubectl config get-contexts $(kubectl config current-context) --no-headers | awk '{ system("echo "$3"/"$5"") }')
+AZ=$(az account show | jq -r ".name")
+
+echo "[ k8s:$K8S | az:$AZ ]"

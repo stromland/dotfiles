@@ -18,10 +18,9 @@ Install dependencies in [Brewfile](../homebrew/Brewfile)
 | ----- | -------------------- |
 | `C-k` | Prefix               |
 | `r`   | Reload tmux config   |
-| `Q`   | Session: Kill        |
 | `C-h` | Window: Previous     |
 | `C-l` | Window: Next         |
-| `q`   | Window: Kill         |
+| `C-q` | Window: Kill         |
 | `h`   | Pane: Left           |
 | `j`   | Pane: Down           |
 | `k`   | Pane: Up             |
