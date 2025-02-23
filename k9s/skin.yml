@@ -1,0 +1,109 @@
+# Stromland presets
+foreground: &foreground "#DCDFE4"
+background: &background "#1b1c24"
+black: &black "#404352"
+blue: &blue "#61AFEF"
+green: &green "#98C379"
+grey: &grey "#67696f"
+orange: &orange "#E5C07B"
+purple: &purple "#C678DD"
+red: &red "#E06C75"
+yellow: &yellow "#E5C07B"
+yellow_bright: &yellow_bright "#E5C07B"
+comment: &comment "#9E8672"
+
+k9s:
+  body:
+    fgColor: *foreground
+    bgColor: *background
+    logoColor: *comment
+  prompt:
+    fgColor: *foreground
+    bgColor: *background
+    suggestColor: *red
+  info:
+    fgColor: *comment
+    sectionColor: *grey
+  help:
+    fgColor: *foreground
+    bgColor: *background
+    keyColor: *yellow
+    numKeyColor: *blue
+    sectionColor: *purple
+  dialog:
+    fgColor: *comment
+    bgColor: *background
+    buttonFgColor: *foreground
+    buttonBgColor: *green
+    buttonFocusFgColor: *background
+    buttonFocusBgColor: *blue
+    labelFgColor: *foreground
+    fieldFgColor: *green
+  frame:
+    border:
+      fgColor: *comment
+      focusColor: *comment
+    menu:
+      fgColor: *foreground
+      keyColor: *yellow
+      numKeyColor: *blue
+    crumbs:
+      fgColor: *background
+      bgColor: *green
+      activeColor: *yellow
+    status:
+      newColor: *green
+      modifyColor: *blue
+      addColor: *black
+      pendingColor: *blue
+      errorColor: *red
+      highlightColor: *yellow
+      killColor: *purple
+      completedColor: *grey
+    title:
+      fgColor: *comment
+      bgColor: *background
+      highlightColor: *yellow
+      counterColor: *blue
+      filterColor: *blue
+  views:
+    charts:
+      bgColor: *background
+      defaultDialColors:
+        - *green
+        - *red
+      defaultChartColors:
+        - *green
+        - *red
+    table:
+      fgColor: *yellow
+      bgColor: *background
+      cursorFgColor: *background
+      cursorBgColor: *blue
+      markColor: *yellow_bright
+      header:
+        fgColor: *foreground
+        bgColor: *background
+        sorterColor: *blue
+    xray:
+      fgColor: *blue
+      bgColor: *background
+      cursorColor: *foreground
+      graphicColor: *yellow_bright
+      showIcons: false
+    yaml:
+      keyColor: *purple
+      colonColor: *foreground
+      valueColor: *green
+    logs:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *blue
+        bgColor: *background
+    help:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *blue
+

@@ -8,20 +8,20 @@ local plugins = {
      end,
    },
    config = function()
-      require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
    end,
   },
   {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "gopls",
-        "golangci-lint",
-        "typescript-language-server",
-        "eslint-lsp",
-      },
-    },
+    "nvim-tree/nvim-tree.lua",
+    opts = function()
+      local nt = require "nvchad.configs.nvimtree"
+      nt.view.adaptive_size = true
+      nt.renderer.icons.glyphs.folder.default = ""
+      nt.renderer.icons.show = {
+        git = false
+      }
+      return nt
+    end,
   },
   {
     "NvChad/nvim-colorizer.lua",
@@ -41,6 +41,7 @@ local plugins = {
         "json",
         "yaml",
         "html",
+        "css",
         "javascript",
         "typescript",
         "markdown",
@@ -50,13 +51,13 @@ local plugins = {
   {
     "lewis6991/gitsigns.nvim",
     opts = function()
-      local gs = require("plugins.configs.others").gitsigns
+      local gs = require "nvchad.configs.gitsigns"
       gs.signs.add = { text = "│" }
-      gs.signs.change = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" }
+      -- gs.signs.change = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" }
       gs.signs.delete = { text = "_" }
       gs.signs.topdelete = { text = "‾" }
       gs.signs.changedelete = { text = "" }
-      gs.signs.untracked = { text = "|" }
+      gs.signs.untracked = { text = "│" }
       return gs
     end,
   },

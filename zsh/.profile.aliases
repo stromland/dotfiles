@@ -1,0 +1,7 @@
+# ==== Aliases
+alias ls="eza"
+alias cat="bat"
+alias k="kubectl"
+alias kns="k config set-context --current --namespace"
+alias docker="nerdctl"
+

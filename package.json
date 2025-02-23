@@ -1,0 +1,13 @@
+{
+  "name": "dotfiles",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "./setup.mjs apply-watch",
+    "apply": "./setup.mjs apply"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.9",
+    "zx": "^8.3.2"
+  }
+}
