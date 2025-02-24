@@ -18,7 +18,7 @@ const filesToCopy = [
   },
   {
     dir: "zsh",
-    files: [".profile", ".profile.aliases", ".profile.overrides", ".zshrc"],
+    files: [".profile", ".profile.aliases", ".zshrc"],
     dst: {
       [MAC]: HOME,
       [LINUX]: HOME,

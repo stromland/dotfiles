@@ -27,3 +27,6 @@ lg() {
   "${COMMAND[@]}"
 }
 
+set_secret_env() {
+  read -s $1 && export $1
+}

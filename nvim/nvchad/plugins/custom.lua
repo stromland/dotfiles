@@ -20,6 +20,7 @@ local plugins = {
       nt.renderer.icons.show = {
         git = false
       }
+      nt.filters.git_ignored = false
       return nt
     end,
   },
