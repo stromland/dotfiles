@@ -1,5 +1,13 @@
 local plugins = {
   {
+    "smithbm2316/centerpad.nvim",
+    lazy = false
+  },
+  {
+    "github/copilot.vim",
+    lazy = true
+  },
+  {
   "neovim/nvim-lspconfig",
    dependencies = {
      "jose-elias-alvarez/null-ls.nvim",

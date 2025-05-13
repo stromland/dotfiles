@@ -1,3 +1,6 @@
+# 1/2 Uncomment to profile startup
+# zmodload zsh/zprof
+
 # User configuration
 source $HOME/.profile
 source $HOME/.profile.overrides
@@ -21,3 +24,5 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 source $HOME/.profile.aliases
 
+# 2/2 Uncomment to profile startup
+# zprof
