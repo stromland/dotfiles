@@ -12,7 +12,6 @@ git_fetch_pr() {
 
 use_java() {
   export JAVA_HOME=$(/usr/libexec/java_home -v $1)
-  echo $JAVA_HOME
 }
 
 len() {

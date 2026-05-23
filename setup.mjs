@@ -155,7 +155,7 @@ function watchFiles() {
     });
 }
 
-const [mode] = argv["_"];
+const [_, mode] = argv["_"];
 
 switch (mode) {
   case "apply-watch":

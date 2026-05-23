@@ -27,6 +27,8 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.local/bin"
 # Rust
 export PATH="$PATH:$HOME/.cargo/bin"
+# Go
+export PATH="$PATH:$(go env GOPATH)/bin"
 
 # ==== Custom functions
 source ~/bin/utilities-functions.sh
