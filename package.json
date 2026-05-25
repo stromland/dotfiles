@@ -8,7 +8,7 @@
     "sync": "./setup.mjs sync"
   },
   "dependencies": {
-    "nodemon": "^3.1.9",
-    "zx": "^8.3.2"
+    "nodemon": "3.1.14",
+    "zx": "8.8.5"
   }
 }
