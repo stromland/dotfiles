@@ -4,21 +4,20 @@ if [[ $(uname) == "Linux" ]]; then
 fi
 
 # ==== NVM
-export NVM_DIR="${HOMEBREW_PREFIX}/opt/nvm"
-nvm() {
-  unset -f nvm
-  [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-  nvm "$@"
-}
-node() {
-  unset -f node
-  [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-  node "$@"
-}
-npm() {
-  unset -f npm
-  [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-  npm "$@"
+# export NVM_DIR="${HOMEBREW_PREFIX}/opt/nvm"
+nvm_load() {
+  if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]
+  then
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+  elif [ -s "/usr/local/opt/nvm/nvm.sh" ]
+  then
+    [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+  else
+    # nvm is not available
+    :
+  fi
 }
 
 # ==== BINs

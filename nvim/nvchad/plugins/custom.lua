@@ -1,23 +1,17 @@
 local plugins = {
   {
     "smithbm2316/centerpad.nvim",
-    lazy = false
+    lazy = false,
   },
   {
     "github/copilot.vim",
-    lazy = true
+    lazy = true,
   },
   {
-  "neovim/nvim-lspconfig",
-   dependencies = {
-     "jose-elias-alvarez/null-ls.nvim",
-     config = function()
-       require "custom.configs.null-ls"
-     end,
-   },
-   config = function()
+    "neovim/nvim-lspconfig",
+    config = function()
       require "custom.configs.lspconfig"
-   end,
+    end,
   },
   {
     "nvim-tree/nvim-tree.lua",
@@ -26,7 +20,7 @@ local plugins = {
       nt.view.adaptive_size = true
       nt.renderer.icons.glyphs.folder.default = ""
       nt.renderer.icons.show = {
-        git = false
+        git = false,
       }
       nt.filters.git_ignored = false
       return nt
@@ -36,9 +30,9 @@ local plugins = {
     "NvChad/nvim-colorizer.lua",
     opts = {
       user_default_options = {
-        names = false
-      }
-    }
+        names = false,
+      },
+    },
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -55,7 +49,7 @@ local plugins = {
         "typescript",
         "markdown",
       },
-    }
+    },
   },
   {
     "lewis6991/gitsigns.nvim",
