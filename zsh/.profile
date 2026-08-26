@@ -24,6 +24,8 @@ nvm_load() {
 # Home
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.local/bin"
+# Go
+export PATH="$PATH:$HOME/go/bin"
 # Rust
 export PATH="$PATH:$HOME/.cargo/bin"
 
