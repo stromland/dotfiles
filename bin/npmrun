@@ -1,0 +1,89 @@
+#!/bin/zsh
+
+# Script to list and run npm scripts from package.json
+
+# Color definitions
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+MAGENTA='\033[0;35m'
+BOLD='\033[1m'
+RESET='\033[0m'
+
+# Check if package.json exists
+if [[ ! -f "package.json" ]]; then
+    echo "${RED}Error: package.json not found in current directory${RESET}"
+    exit 1
+fi
+
+# Check if jq is available
+if ! command -v jq >/dev/null 2>&1; then
+    echo "${RED}Error: jq is required but was not found${RESET}"
+    exit 1
+fi
+
+# Validate package.json before reading scripts
+if ! jq empty package.json >/dev/null 2>&1; then
+    echo "${RED}Error: package.json is not valid JSON${RESET}"
+    exit 1
+fi
+
+# Extract scripts from package.json and create arrays
+declare -a scripts
+declare -a script_commands
+while IFS= read -r -d $'\0' name && IFS= read -r -d $'\0' cmd; do
+    scripts+=("$name")
+    script_commands+=("$cmd")
+done < <(jq -j '(.scripts // {}) | to_entries[] | .key, "\u0000", (.value | tostring), "\u0000"' package.json)
+
+# Check if there are any scripts
+if [[ ${#scripts[@]} -eq 0 ]]; then
+    echo "${YELLOW}No scripts found in package.json${RESET}"
+    exit 0
+fi
+
+# Display scripts as a table
+echo "${BOLD}${CYAN}Available npm scripts:${RESET}"
+echo "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+printf "${BOLD}%-5s %-30s %-80s${RESET}\n" "No." "Script" "Command"
+echo "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+for i in {1..${#scripts[@]}}; do
+    printf "${GREEN}%-5s${RESET} ${YELLOW}%-30s${RESET} ${CYAN}%-80s${RESET}\n" "$i" "${scripts[$i]}" "${script_commands[$i]}"
+done
+echo "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+echo "${MAGENTA}Enter 0 to exit${RESET}"
+echo ""
+
+# Read user input
+read "choice?Select a script to run (0-${#scripts[@]}): "
+
+# Exit if 0 or empty
+if [[ -z "$choice" ]] || [[ "$choice" -eq 0 ]]; then
+    echo "${YELLOW}Exiting...${RESET}"
+    exit 0
+fi
+
+# Validate input is a number
+if ! [[ "$choice" =~ ^[0-9]+$ ]]; then
+    echo "${RED}Invalid input. Please enter a number.${RESET}"
+    exit 1
+fi
+
+# Check if choice is within valid range
+if [[ "$choice" -lt 1 ]] || [[ "$choice" -gt ${#scripts[@]} ]]; then
+    echo "${RED}Invalid selection. Please choose a number between 0 and ${#scripts[@]}.${RESET}"
+    exit 1
+fi
+
+# Get the selected script name
+selected_script="${scripts[$choice]}"
+
+echo ""
+echo "${BOLD}${GREEN}Running: ${RESET}${CYAN}npm run $selected_script${RESET}"
+echo "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+echo ""
+
+# Run the selected script
+npm run "$selected_script"
