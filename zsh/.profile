@@ -34,4 +34,3 @@ source ~/bin/utilities-functions.sh
 
 # ==== ENVs
 export EDITOR=nvim
-

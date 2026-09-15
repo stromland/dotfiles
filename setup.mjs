@@ -26,10 +26,10 @@ const filesToCopy = [
   },
   {
     dir: "zsh",
-    files: ["stromland.zsh-theme"],
+    files: ["stromland.zsh"],
     dst: {
-      [MAC]: `${HOME}/.oh-my-zsh/themes`,
-      [LINUX]: `${HOME}/.oh-my-zsh/themes`,
+      [MAC]: `${HOME}/.zshrc.d`,
+      [LINUX]: `${HOME}/.zshrc.d`,
     },
   },
   {
@@ -38,14 +38,6 @@ const filesToCopy = [
     dst: {
       [MAC]: `${HOME}/Library/Application Support/lazygit`,
       [LINUX]: `${HOME}/.config/lazygit`,
-    },
-  },
-  {
-    dir: "nvim/nvchad",
-    files: ["custom", "plugins", "themes", "chadrc.lua"],
-    dst: {
-      [MAC]: `${HOME}/.config/nvim/lua`,
-      [LINUX]: `${HOME}/.config/nvim/lua`,
     },
   },
   {
@@ -170,4 +162,3 @@ switch (mode) {
   default:
     Log.error(" ERROR ", "Use one of: apply-watch, apply, sync");
 }
-

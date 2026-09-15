@@ -1,5 +1,4 @@
 tap "azure/kubelogin", "https://github.com/Azure/homebrew-kubelogin"
-tap "homebrew/bundle"
 # Microsoft Azure CLI 2.0
 brew "azure-cli"
 # Bourne-Again SHell, a UNIX command interpreter
