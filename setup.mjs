@@ -26,10 +26,10 @@ const filesToCopy = [
   },
   {
     dir: "zsh",
-    files: ["stromland.zsh-theme"],
+    files: ["stromland.zsh"],
     dst: {
-      [MAC]: `${HOME}/.oh-my-zsh/themes`,
-      [LINUX]: `${HOME}/.oh-my-zsh/themes`,
+      [MAC]: `${HOME}/.zshrc.d`,
+      [LINUX]: `${HOME}/.zshrc.d`,
     },
   },
   {
@@ -38,14 +38,6 @@ const filesToCopy = [
     dst: {
       [MAC]: `${HOME}/Library/Application Support/lazygit`,
       [LINUX]: `${HOME}/.config/lazygit`,
-    },
-  },
-  {
-    dir: "nvim/nvchad",
-    files: ["custom", "plugins", "themes", "chadrc.lua"],
-    dst: {
-      [MAC]: `${HOME}/.config/nvim/lua`,
-      [LINUX]: `${HOME}/.config/nvim/lua`,
     },
   },
   {
@@ -112,6 +104,24 @@ function handleCopyFiles(config) {
   });
 }
 
+function handleSyncFiles(config) {
+  setup((platform) => {
+    const dst = config.dst[platform];
+    fs.ensureDirSync(dst);
+
+    for (let file of config.files) {
+      const srcFile = `./${config.dir}/${file}`;
+
+      if (config.rename?.[file] !== undefined) {
+        file = config.rename[file];
+      }
+      const dstFile = `${dst}/${file}`;
+      fs.copySync(dstFile, srcFile);
+      Log.success("  SYNCED  ", `${srcFile} -> ${dstFile}`);
+    }
+  });
+}
+
 function watchFiles() {
   nodemon({
     ext: "*",
@@ -146,7 +156,9 @@ switch (mode) {
   case "apply":
     filesToCopy.forEach(handleCopyFiles);
     break;
+  case "sync":
+    filesToCopy.forEach(handleSyncFiles);
+    break;
   default:
-    Log.error(" ERROR ", "Use one of: apply-watch, apply");
+    Log.error(" ERROR ", "Use one of: apply-watch, apply, sync");
 }
-

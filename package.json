@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "start": "./setup.mjs apply-watch",
-    "apply": "./setup.mjs apply"
+    "apply": "./setup.mjs apply",
+    "sync": "./setup.mjs sync"
   },
   "dependencies": {
     "nodemon": "^3.1.9",

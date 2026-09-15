@@ -1,32 +1,74 @@
-tap "homebrew/bundle"
+tap "azure/kubelogin", "https://github.com/Azure/homebrew-kubelogin"
+# Microsoft Azure CLI 2.0
 brew "azure-cli"
+# Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Programmable completion for Bash 4.2+
 brew "bash-completion@2"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# GNU File, Shell, and Text utilities
 brew "coreutils"
+# Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
+# Modern, maintained replacement for ls
 brew "eza"
+# Collection of GNU find, xargs, and locate
 brew "findutils"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
 brew "gh"
+# Distributed revision control system
 brew "git"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
+# Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Improved top (interactive process viewer)
 brew "htop"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# Kubernetes CLI To Manage Your Clusters In Style!
 brew "k9s"
+# FAST Kubernetes manifests validator, with support for Custom Resources!
+brew "kubeconform"
+# Template-free customization of Kubernetes YAML manifests
+brew "kustomize"
+# Simple terminal UI for git commands
 brew "lazygit"
-brew "python@3.13"
+# Collection of tools that nobody wrote when UNIX was young
 brew "moreutils"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Manage multiple Node.js versions
 brew "nvm"
+# OpenShift command-line interface tools
 brew "openshift-cli"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
+# Draw UML diagrams
+brew "plantuml"
+# Tool for managing OCI containers and pods
+brew "podman"
+# Alternative to docker-compose using podman
+brew "podman-compose"
+# File browser
 brew "ranger"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
-brew "rust"
+# Terminal multiplexer
 brew "tmux"
+# Display directories as trees (with optional color/HTML output)
 brew "tree"
-brew "vim"
+# Executes a program periodically, showing output fullscreen
 brew "watch"
-brew "wget"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
-vscode "github.copilot"
-vscode "github.copilot-chat"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Brings the power of Copilot coding agent directly to your terminal
+cask "copilot-cli"
+cask "font-jetbrains-mono-nerd-font"
+# UI for Kubernetes
+cask "headlamp"
